@@ -28,13 +28,34 @@ describe("Testing translateToMorse", () => {
         expect(result).toBe(".... . .-.. .-.. --- / ..-. .-. --- -- / - .... . / ...- ... / -.-. --- -.. . / ... .. -.. .");
     });
 
+    it("should translate special characters, eg. '?!()' should be '..--.. -.-.-- -.--. -.--.-'", () => {
+        const result = translateToMorse("?!()");
+        expect(result).toBe("..--.. -.-.-- -.--. -.--.-");
+    });
+
+    it("should translate sentences that contain special characters", () => {
+        const result = translateToMorse("Hey, how are you?");
+        expect(result).toBe(".... . -.-- --..-- / .... --- .-- / .- .-. . / -.-- --- ..- ..--..");
+    });
+
+    it("should return a string", () => {
+        const result = translateToMorse("25");
+        expect(typeof result).toBe("string");
+    });
+
+    it("should strip whitespace, eg. '     hello   ', should be '.... . .-.. .-.. ---", () => {
+        const result = translateToMorse("     hello   ");
+        expect(result).toBe(".... . .-.. .-.. ---");
+    })
+
+    it("should translate Polish letters", () => {
+        const result = translateToMorse("ąćęłńóśźż");
+        expect(result).toBe(".-.- -.-.. ..-.. .-..- --.-- ---. ...-... --..-. --..-")
+    });
+
+    it("should translate Polish sentences with capital Polish letters", () => {
+        const result = translateToMorse("Żółte źdźbła pszenicy");
+        expect(result).toBe("--..- ---. .-..- - . / --..-. -.. --..-. -... .-..- .- / .--. ... --.. . -. .. -.-. -.--");
+    });
+
 });
-
-// What should translateToMorse function actually be able to do?
-
-// - Receive letters and translate those letters into morse code ✔️
-// - Take into consideration capital letters - these also need to translate to morse code ✔️
-// - Take into consideration spaces between words and translate them ✔️
-// - Numbers!!! ✔️
-// - Symbols?? 
-// - Extension - different language
