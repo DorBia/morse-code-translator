@@ -17,3 +17,6 @@ export const translateToMorse = (string) => {
     return morseCodeArray.join(" / ");
 }
 
+export const translateToText = (string) => {
+
+};
