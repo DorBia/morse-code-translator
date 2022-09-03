@@ -4,13 +4,22 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Morse Code Translator</title>
+    <link rel="stylesheet" href="./styles.css">
 </head>
 <body>
-    <form class="translate">
-        <input type="text" name="translate" placeholder="Type here...">
-    </form>
-    <div class="container"></div>
+    <main>
+        <h1>Text to Morse <span>and</span> Morse to Text</h1>
+        <div>
+            <textarea name="translate" placeholder="Type here..." class="translate"></textarea>
+        </div>
+    
+        <div class="output-container">
+            <textarea name="translation" placeholder="Output" class="output" disabled></textarea>
+            <button class="copy">Copy Text</button>
+        </div>
+    </main>
+
     
     <script src="main.js" type="module"></script>
 </body>

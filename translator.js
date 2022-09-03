@@ -22,8 +22,8 @@ export const translateToText = (string) => {
     const sentence = string.trim().split(" / ");
     const morseText = sentence.map(word => word.split(" "));
     const englishWords = morseText.map(word => {
-        const englishWord = word.map(letter => Object.keys(alphabet).find(key => alphabet[key] === letter));
-        return englishWord.join("");
+        const englishLetters = word.map(letter => Object.keys(alphabet).find(key => alphabet[key] === letter));
+        return englishLetters.join("");
     });
     return englishWords.join(" ");
 };
