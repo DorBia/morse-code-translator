@@ -76,8 +76,22 @@ textarea:focus {
     cursor: pointer;
 }
 
-.copy:hover {
+.copy:hover,
+.play-sound:hover {
     opacity: 1;
+}
+
+.play-sound {
+    position: absolute;
+    background: url("./media/play-button.svg");
+    height: 40px;
+    width: 40px;
+    left: 40px;
+    border-radius: 50px;
+    bottom: 30px;
+    cursor: pointer;
+    display: none;
+    opacity: 0.6;
 }
 
 @media (prefers-color-scheme: light) {
