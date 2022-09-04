@@ -6,22 +6,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Morse Code Translator</title>
     <link rel="stylesheet" href="./styles.css">
+    <link rel="icon" type="image/x-icon" href="translator.ico?">
 </head>
 <body>
     <main>
-        <h1>Text to Morse <span>and</span> Morse to Text</h1>
-        <div>
-            <textarea name="translate" placeholder="Type here..." class="translate"></textarea>
+        <h1 class="heading">Text to Morse <span class="heading__span">and</span> Morse to Text</h1>
+        <div class="input">
+            <textarea name="translate" placeholder='Type here text or morse code (with morse code use space between letters and " / " between words)' class="text input__text"></textarea>
         </div>
     
-        <div class="output-container">
-            <textarea name="translation" placeholder="Output" class="output" disabled></textarea>
-            <button class="copy">Copy Text</button>
-            <button class="play-sound"></button>
+        <div class="output">
+            <textarea name="translation" placeholder="Output" class="text output__text" disabled></textarea>
+            <button class="output__copy">Copy Text</button>
+            <button class="output__play-sound"></button>
         </div>
     </main>
 
-    
+
     <script src="main.js" type="module"></script>
 </body>
 </html>

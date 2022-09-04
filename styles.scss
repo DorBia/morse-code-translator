@@ -1,19 +1,17 @@
 @import url('https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@500&family=Quicksand:wght@500&display=swap');
 
-$font-one: 'M PLUS Rounded 1c', sans-serif;
-$font-two: 'Quicksand', sans-serif;
+$font-heading: 'M PLUS Rounded 1c', sans-serif;
+$font-body: 'Quicksand', sans-serif;
+
 * {
     margin: 0;
     padding: 0;
 }
 
 body {
-    font-family: $font-two;
+    font-family: $font-body;
     background: rgb(43,43,43);
     background: linear-gradient(180deg, #2b2b2b 0%, #030303 30%);
-
-
-
 }
 
 main {
@@ -27,16 +25,18 @@ main {
     text-align: center;
 }
 
-h1 {
-    font-family: $font-one;
+.heading {
+    font-family: $font-heading;
     color: #fefcfb;
+
+    &__span {
+        display: block;
+        font-size: 1.4rem;
+        font-family: $font-body;
+    }
 }
-span {
-    display: block;
-    font-size: 1.4rem;
-    font-family: $font-two;
-}
-textarea {
+
+.text {
     width: 80vw;
     height: 30vh;
     max-height: 450px;
@@ -51,48 +51,50 @@ textarea {
     background: #770000;
     background: linear-gradient(180deg, #770000 0%, #390000 75%);
 
+    &:focus {
+        background: #77000097;
+        outline: none !important;
+    }
 }
 
-textarea:focus {
-    background: #77000097;
-    outline: none !important;
-}
+/* ----- BUTTONS STYLING ----- */
 
-.output-container {
+.output {
     position: relative;
 
+    &__copy {
+        position: absolute;
+        bottom: 30px;
+        right: 40px;
+        padding: 10px;
+        background: #353535;
+        border: none;
+        opacity: 0.6;
+        border-radius: 5px;
+        color: #ebebeb;
+        cursor: pointer;
+    }
+
+    &__play-sound {
+        position: absolute;
+        background: url("./media/play-button.svg");
+        height: 40px;
+        width: 40px;
+        left: 40px;
+        border-radius: 50px;
+        bottom: 30px;
+        cursor: pointer;
+        display: none;
+        opacity: 0.6;
+    }
+
+    &__copy:hover,
+    &__play-sound:hover {
+        opacity: 1;
+    }
 }
 
-.copy {
-    position: absolute;
-    bottom: 30px;
-    right: 40px;
-    padding: 10px;
-    background: #353535;
-    border: none;
-    opacity: 0.6;
-    border-radius: 5px;
-    color: #ebebeb;
-    cursor: pointer;
-}
-
-.copy:hover,
-.play-sound:hover {
-    opacity: 1;
-}
-
-.play-sound {
-    position: absolute;
-    background: url("./media/play-button.svg");
-    height: 40px;
-    width: 40px;
-    left: 40px;
-    border-radius: 50px;
-    bottom: 30px;
-    cursor: pointer;
-    display: none;
-    opacity: 0.6;
-}
+/* ----- MEDIA ----- */
 
 @media (prefers-color-scheme: light) {
     body {
@@ -100,17 +102,19 @@ textarea:focus {
         background: linear-gradient(180deg, #d4d4d4 0%, #ababab 52%);
     }
 
-    h1 {
+    .heading {
         color: #252525;
     }
 
-    textarea {
+    .text {
         background: #33bbff;
         background: linear-gradient(180deg, #33bbff 0%, #007a9f 80%);
+
+        &:focus {
+            background: #0b6490c3;
+        }
     }
-    textarea:focus {
-        background: #0b6490c3;
-    }
+
 }
 
 @media screen and (orientation: landscape) {
@@ -124,25 +128,24 @@ textarea:focus {
         align-content: space-evenly;
     }
 
-    h1 {
+    .heading {
         grid-column-start: 1;
         grid-column-end: 3;
+
+        &__span {
+            display: inline-block;
+            padding:0.5rem;
+        }
     }
 
-    textarea {
+    .text {
         width: 35vw;
         max-width: 600px;
     }
-    
-    span {
-        display: inline-block;
-        padding:0.5rem;
-    }
-    
 }
 
 @media screen and (orientation: landscape) and (min-width: 850px) {
-    h1 {
+    .heading {
         font-size: 3rem;
     }
 }
