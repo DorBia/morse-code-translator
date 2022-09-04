@@ -32,31 +32,36 @@ copy.addEventListener("click", () => {
     navigator.clipboard.writeText(outputBox.textContent);
 });
 
+// using src rather than new sounds for Safari and iOS, otherwise it doesn't work
 const playMorseCode = () => {
-    const short = new Audio('./media/morse-short.wav')
-    const long = new Audio('./media/morse-long.wav')
-    const shortBreak = new Audio('./media/silent-short.wav')
-    const longBreak = new Audio('./media/silent-long.wav')
+    const sound = new Audio()
     
     const string = outputBox.textContent;
     let index = 0;
     const playAudio = (audio) => {
         if (!audio || !(audio instanceof Audio)) return;
+        
         audio.onended = () => {
             if(string[index] === ".") {
-                playAudio(short);
+                sound.src = "./media/morse-short.wav"
+                playAudio(sound);
             } else if(string[index] === "-") {
-                playAudio(long);
+                sound.src = "./media/morse-long.wav"
+                playAudio(sound);
             } else if(string[index] === " ") {
-                playAudio(shortBreak);
+                sound.src = "./media/silent-short.wav"
+                playAudio(sound);
             } else if(string[index] === "/") {
-                playAudio(longBreak);
+                sound.src = "./media/silent-long.wav"
+                playAudio(sound);
             }
             index++;
         }
         audio.play();
+        
     }
-    playAudio(shortBreak)
+    sound.src = "./media/silent-short.wav"
+    playAudio(sound)
 }
 
 playButton.addEventListener("click", () => {
