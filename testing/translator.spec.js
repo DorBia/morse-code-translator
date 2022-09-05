@@ -1,4 +1,4 @@
-import {translateToMorse, translateToText} from "./translator";
+import {translateToMorse, translateToText} from "../scripts/translator";
 
 describe("Testing translateToMorse", () => {
     it("should translate single letters, eg. 'a' should be '.-'", () => {

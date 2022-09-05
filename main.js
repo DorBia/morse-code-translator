@@ -1,5 +1,5 @@
-import {morseSynth} from "./morseSynth.js"
-import {translateToMorse, translateToText} from "./translator.js";
+import {morseSynth} from "./scripts/morseSynth.js"
+import {translateToMorse, translateToText} from "./scripts/translator.js";
 
 
 /* ----- DOM ----- */
@@ -41,23 +41,23 @@ const playMorseCode = () => {
         
         audio.onended = () => {
             if(string[index] === ".") {
-                sound.src = "./media/morse-short.wav";
+                sound.src = "./assets/media/morse-short.wav";
                 playAudio(sound);
             } else if(string[index] === "-") {
-                sound.src = "./media/morse-long.wav";
+                sound.src = "./assets/media/morse-long.wav";
                 playAudio(sound);
             } else if(string[index] === " ") {
-                sound.src = "./media/silent-short.wav";
+                sound.src = "./assets/media/silent-short.wav";
                 playAudio(sound);
             } else if(string[index] === "/") {
-                sound.src = "./media/silent-long.wav";
+                sound.src = "./assets/media/silent-long.wav";
                 playAudio(sound);
             }
             index++;
         }
         audio.play();
     }
-    sound.src = "./media/silent-short.wav";
+    sound.src = "./assets/media/silent-short.wav";
     playAudio(sound);
 }
 
@@ -82,7 +82,7 @@ const disableButton = (button) => {
 // playing sound using audio files - based on the morse code
 outputPlayButton.addEventListener("click", () => {
     playMorseCode();
-    disableButton(outputPlayButton)
+    disableButton(outputPlayButton);
 });
 
 
