@@ -3,6 +3,9 @@
 $font-heading: 'M PLUS Rounded 1c', sans-serif;
 $font-body: 'Quicksand', sans-serif;
 
+$color-main-dark: #fefcfb;
+$color-shadow-dark: #c7c7c7;
+
 * {
     margin: 0;
     padding: 0;
@@ -27,7 +30,7 @@ main {
 
 .heading {
     font-family: $font-heading;
-    color: #fefcfb;
+    color: $color-main-dark;
 
     &__span {
         display: block;
@@ -43,11 +46,11 @@ main {
     font-size: 2rem;
     font-family: inherit;
     padding: 1rem;
-    border: 1px solid #c7c7c7;
+    border: 1px solid $color-shadow-dark;
     border-radius: 25px;
     margin: 1rem;
-    color: #fefcfb;
-    box-shadow: 0 0 10px #c7c7c7;
+    color: $color-main-dark;
+    box-shadow: 0 0 10px $color-shadow-dark;
     background: #770000;
     background: linear-gradient(180deg, #770000 0%, #390000 75%);
 

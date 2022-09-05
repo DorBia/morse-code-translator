@@ -12,24 +12,26 @@ const inputPlayButton = document.querySelector(".input__play-sound");
 
 /* ----- FUNCTIONS ----- */
 
-// "print" translation to the output box
-const addTranslation = () => {
+// translate the input and return the translation
+const translateInput = (input) => {
     let translated = "";
     const pattern = /^[-. /]{1,}$/;
     
-    if(pattern.test(toTranslate.value)) {
-        translated = translateToText(toTranslate.value);
+    if(pattern.test(input)) {
+        translated = translateToText(input);
         outputPlayButton.style.display = "none";
         inputPlayButton.style.display = "none";
 
     } else {
-        translated = translateToMorse(toTranslate.value);
+        translated = translateToMorse(input);
         outputPlayButton.style.display = "block";
         inputPlayButton.style.display = "block";
-
     }
-    outputBox.innerHTML = translated;
+    return translated;
 }
+
+// print the value
+const displayTranslation = () => outputBox.innerHTML = translateInput(toTranslate.value);
 
 // play sound - using src rather than new sounds for Safari and iOS, otherwise it doesn't work
 const playMorseCode = () => {
@@ -63,7 +65,7 @@ const playMorseCode = () => {
 
 /* ----- EVENTS AND BUTTONS ----- */
 
-toTranslate.addEventListener("keyup", addTranslation);
+toTranslate.addEventListener("keyup", displayTranslation);
 
 copy.addEventListener("click", () => {
     outputBox.select();
