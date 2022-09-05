@@ -52,6 +52,10 @@ main {
 }
 
 /* ----- BUTTONS STYLING ----- */
+.input {
+  position: relative;
+}
+
 .output {
   position: relative;
 }
@@ -67,7 +71,11 @@ main {
   color: #ebebeb;
   cursor: pointer;
 }
-.output__play-sound {
+.output__copy:hover {
+  opacity: 1;
+}
+
+.play-sound {
   position: absolute;
   background: url("./media/play-button.svg");
   height: 40px;
@@ -79,7 +87,7 @@ main {
   display: none;
   opacity: 0.6;
 }
-.output__copy:hover, .output__play-sound:hover {
+.play-sound:hover {
   opacity: 1;
 }
 

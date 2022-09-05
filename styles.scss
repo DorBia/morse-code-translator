@@ -59,6 +59,10 @@ main {
 
 /* ----- BUTTONS STYLING ----- */
 
+.input {
+    position: relative;
+}
+
 .output {
     position: relative;
 
@@ -75,21 +79,24 @@ main {
         cursor: pointer;
     }
 
-    &__play-sound {
-        position: absolute;
-        background: url("./media/play-button.svg");
-        height: 40px;
-        width: 40px;
-        left: 40px;
-        border-radius: 50px;
-        bottom: 30px;
-        cursor: pointer;
-        display: none;
-        opacity: 0.6;
+    &__copy:hover {
+        opacity: 1;
     }
+}
 
-    &__copy:hover,
-    &__play-sound:hover {
+.play-sound {
+    position: absolute;
+    background: url("./media/play-button.svg");
+    height: 40px;
+    width: 40px;
+    left: 40px;
+    border-radius: 50px;
+    bottom: 30px;
+    cursor: pointer;
+    display: none;
+    opacity: 0.6;
+
+    &:hover {
         opacity: 1;
     }
 }

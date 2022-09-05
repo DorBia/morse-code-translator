@@ -1,10 +1,13 @@
+import {morseSynth} from "./morseSynth.js"
 import {translateToMorse, translateToText} from "./translator.js";
+
 
 /* ----- DOM ----- */
 const toTranslate = document.querySelector(".input__text");
 const outputBox = document.querySelector(".output__text");
 const copy = document.querySelector(".output__copy");
-const playButton = document.querySelector(".output__play-sound");
+const outputPlayButton = document.querySelector(".output__play-sound");
+const inputPlayButton = document.querySelector(".input__play-sound");
 
 
 /* ----- FUNCTIONS ----- */
@@ -16,11 +19,14 @@ const addTranslation = () => {
     
     if(pattern.test(toTranslate.value)) {
         translated = translateToText(toTranslate.value);
-        playButton.style.display = "none";
+        outputPlayButton.style.display = "none";
+        inputPlayButton.style.display = "none";
 
     } else {
         translated = translateToMorse(toTranslate.value);
-        playButton.style.display = "block";
+        outputPlayButton.style.display = "block";
+        inputPlayButton.style.display = "block";
+
     }
     outputBox.innerHTML = translated;
 }
@@ -65,10 +71,25 @@ copy.addEventListener("click", () => {
     navigator.clipboard.writeText(outputBox.textContent);
 });
 
-playButton.addEventListener("click", () => {
-    playMorseCode();
-    playButton.style.display = "none";
+const disableButton = (button) => {
+    button.style.display = "none";
+
     // disable button anyway, prevents from adding a letter and playing again immediately
-    playButton.disabled = true;
-    setTimeout(() => playButton.disabled = false, 5000);
+    button.disabled = true;
+    setTimeout(() => button.disabled = false, 5000);
+}
+
+// playing sound using audio files - based on the morse code
+outputPlayButton.addEventListener("click", () => {
+    playMorseCode();
+    disableButton(outputPlayButton)
+});
+
+
+// playing sound using computer sounds rather than audio files - based on the text
+inputPlayButton.addEventListener("click", () => {
+    const morse = new morseSynth();
+    morse.play(toTranslate.value);
+
+    disableButton(inputPlayButton);
 });
